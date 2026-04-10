@@ -1,0 +1,124 @@
+=== Six Chess Game Record ===
+Date: 2025-11-27 11:50:06
+Winner: White
+Total moves: 12
+Move sequence: (7,7) (6,7) (11,1) (7,6) (2,2) (5,8) (3,4) (8,5) (5,6) (4,9) (8,7) (3,10) 
+Detailed moves:
+Move 1: Black (7,7)
+Move 2: White (6,7)
+Move 3: Black (11,1)
+Move 4: White (7,6)
+Move 5: Black (2,2)
+Move 6: White (5,8)
+Move 7: Black (3,4)
+Move 8: White (8,5)
+Move 9: Black (5,6)
+Move 10: White (4,9)
+Move 11: Black (8,7)
+Move 12: White (3,10)
+=====================
+
+=== Six Chess Game Record ===
+Date: 2025-11-29 00:08:45
+Winner: White
+Total moves: 22
+Move sequence: (7,7) (6,7) (6,8) (8,6) (8,8) (7,8) (7,9) (5,7) (9,7) (6,10) (9,9) (6,6) (8,9) (6,9) (9,8) (9,6) (10,7) (8,7) (10,9) (5,10) (10,5) (4,11) 
+Detailed moves:
+Move 1: Black (7,7)
+Move 2: White (6,7)
+Move 3: Black (6,8)
+Move 4: White (8,6)
+Move 5: Black (8,8)
+Move 6: White (7,8)
+Move 7: Black (7,9)
+Move 8: White (5,7)
+Move 9: Black (9,7)
+Move 10: White (6,10)
+Move 11: Black (9,9)
+Move 12: White (6,6)
+Move 13: Black (8,9)
+Move 14: White (6,9)
+Move 15: Black (9,8)
+Move 16: White (9,6)
+Move 17: Black (10,7)
+Move 18: White (8,7)
+Move 19: Black (10,9)
+Move 20: White (5,10)
+Move 21: Black (10,5)
+Move 22: White (4,11)
+=====================
+
+=== Six Chess Game Record ===
+Date: 2025-12-10 22:13:35
+Winner: White
+Total moves: 46
+Move sequence: (7,7) (6,7) (6,8) (8,6) (7,8) (7,6) (6,6) (8,8) (8,7) (5,8) (8,5) (4,9) (3,10) (9,6) (6,9) (5,10) (5,7) (10,6) (7,9) (11,6) (12,6) (7,10) (8,10) (4,6) (6,10) (9,11) (6,11) (6,12) (5,9) (8,9) (4,10) (3,11) (2,10) (1,10) (9,0) (4,8) (9,9) (4,7) (4,5) (7,11) (9,7) (10,7) (7,5) (9,8) (5,5) (12,5) 
+Detailed moves:
+Move 1: Black (7,7)
+Move 2: White (6,7)
+Move 3: Black (6,8)
+Move 4: White (8,6)
+Move 5: Black (7,8)
+Move 6: White (7,6)
+Move 7: Black (6,6)
+Move 8: White (8,8)
+Move 9: Black (8,7)
+Move 10: White (5,8)
+Move 11: Black (8,5)
+Move 12: White (4,9)
+Move 13: Black (3,10)
+Move 14: White (9,6)
+Move 15: Black (6,9)
+Move 16: White (5,10)
+Move 17: Black (5,7)
+Move 18: White (10,6)
+Move 19: Black (7,9)
+Move 20: White (11,6)
+Move 21: Black (12,6)
+Move 22: White (7,10)
+Move 23: Black (8,10)
+Move 24: White (4,6)
+Move 25: Black (6,10)
+Move 26: White (9,11)
+Move 27: Black (6,11)
+Move 28: White (6,12)
+Move 29: Black (5,9)
+Move 30: White (8,9)
+Move 31: Black (4,10)
+Move 32: White (3,11)
+Move 33: Black (2,10)
+Move 34: White (1,10)
+Move 35: Black (9,0)
+Move 36: White (4,8)
+Move 37: Black (9,9)
+Move 38: White (4,7)
+Move 39: Black (4,5)
+Move 40: White (7,11)
+Move 41: Black (9,7)
+Move 42: White (10,7)
+Move 43: Black (7,5)
+Move 44: White (9,8)
+Move 45: Black (5,5)
+Move 46: White (12,5)
+=====================
+
+=== Six Chess Game Record ===
+Date: 2025-12-11 00:55:30
+Winner: White
+Total moves: 12
+Move sequence: (7,7) (6,7) (5,8) (7,6) (1,5) (8,5) (3,5) (9,4) (3,7) (10,3) (8,9) (11,2) 
+Detailed moves:
+Move 1: Black (7,7)
+Move 2: White (6,7)
+Move 3: Black (5,8)
+Move 4: White (7,6)
+Move 5: Black (1,5)
+Move 6: White (8,5)
+Move 7: Black (3,5)
+Move 8: White (9,4)
+Move 9: Black (3,7)
+Move 10: White (10,3)
+Move 11: Black (8,9)
+Move 12: White (11,2)
+=====================
+

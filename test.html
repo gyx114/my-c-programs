@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编程学习助手 - CodeRunner示例</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e6e6e6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(45deg, #4cc9f0, #4361ee);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #b8b8b8;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s, background 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #4cc9f0;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .code-editor {
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+        }
+
+        .code-title {
+            color: #4cc9f0;
+            font-weight: bold;
+        }
+
+        .copy-btn {
+            background: #4361ee;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: #3a56d4;
+        }
+
+        pre {
+            color: #d4d4d4;
+            font-size: 1rem;
+            line-height: 1.5;
+            overflow-x: auto;
+            padding: 15px;
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .comment {
+            color: #6a9955;
+        }
+
+        .function {
+            color: #dcdcaa;
+        }
+
+        .demo-area {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #4361ee, #3a0ca3);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .counter {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #4cc9f0;
+        }
+
+        .color-box {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #ff595e, #ffca3a);
+            margin: 20px auto;
+            border-radius: 15px;
+            transition: transform 0.5s, border-radius 0.5s;
+        }
+
+        .color-box:hover {
+            transform: rotate(15deg) scale(1.1);
+            border-radius: 50%;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="notification" id="notification">代码已复制到剪贴板！</div>
+
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-code"></i> CodeRunner示例</h1>
+            <p class="subtitle">一个功能完整的HTML/CSS/JS演示页面</p>
+            <p>点击卡片查看功能，试试下面的交互示例！</p>
+        </header>
+
+        <div class="features">
+            <div class="card" onclick="showFeature('html')">
+                <i class="fab fa-html5"></i>
+                <h3>HTML5 结构</h3>
+                <p>语义化标签，响应式布局，现代化设计</p>
+            </div>
+
+            <div class="card" onclick="showFeature('css')">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS3 样式</h3>
+                <p>渐变背景，动画效果，Flexbox/Grid布局</p>
+            </div>
+
+            <div class="card" onclick="showFeature('js')">
+                <i class="fab fa-js-square"></i>
+                <h3>JavaScript 交互</h3>
+                <p>动态内容，事件处理，DOM操作</p>
+            </div>
+        </div>
+
+        <div class="code-editor">
+            <div class="code-header">
+                <span class="code-title">示例代码：HTML结构</span>
+                <button class="copy-btn" onclick="copyCode()">
+                    <i class="fas fa-copy"></i> 复制代码
+                </button>
+            </div>
+            <pre id="code"><code><span class="keyword">&lt;div</span> <span class="function">class</span>=<span class="string">"card"</span><span class="keyword">&gt;</span>
+  <span class="keyword">&lt;i</span> <span class="function">class</span>=<span class="string">"fas fa-star"</span><span class="keyword">&gt;&lt;/i&gt;</span>
+  <span class="keyword">&lt;h3&gt;</span>卡片标题<span class="keyword">&lt;/h3&gt;</span>
+  <span class="keyword">&lt;p&gt;</span>这是一个响应式卡片组件示例<span class="keyword">&lt;/p&gt;</span>
+  <span class="keyword">&lt;button</span> <span class="function">class</span>=<span class="string">"btn"</span> <span class="function">onclick</span>=<span class="string">"alert('点击了按钮！')"</span><span class="keyword">&gt;</span>
+    点击我
+  <span class="keyword">&lt;/button&gt;</span>
+<span class="keyword">&lt;/div&gt;</span>
+
+<span class="comment">&lt;!-- CSS样式部分 --&gt;</span>
+<span class="function">.card</span> {
+  <span class="function">background</span>: <span class="string">linear-gradient(135deg, #667eea 0%, #764ba2 100%)</span>;
+  <span class="function">border-radius</span>: <span class="string">15px</span>;
+  <span class="function">padding</span>: <span class="string">20px</span>;
+  <span class="function">transition</span>: <span class="string">transform 0.3s ease</span>;
+}
+
+<span class="function">.card:hover</span> {
+  <span class="function">transform</span>: <span class="string">translateY(-5px)</span>;
+}</code></pre>
+        </div>
+
+        <div class="demo-area">
+            <h2><i class="fas fa-magic"></i> 交互演示区</h2>
+
+            <div class="counter" id="counter">0</div>
+
+            <div>
+                <button class="btn" onclick="increaseCounter()">
+                    <i class="fas fa-plus"></i> 增加计数
+                </button>
+                <button class="btn" onclick="resetCounter()">
+                    <i class="fas fa-redo"></i> 重置
+                </button>
+                <button class="btn" onclick="changeColor()">
+                    <i class="fas fa-palette"></i> 随机颜色
+                </button>
+            </div>
+
+            <div class="color-box" id="colorBox"></div>
+
+            <div style="margin-top: 30px;">
+                <h3>动态消息</h3>
+                <input type="text" id="messageInput" placeholder="输入消息..."
+                    style="padding: 10px; width: 300px; max-width: 80%; border-radius: 5px; border: none;">
+                <button class="btn" onclick="showMessage()">
+                    <i class="fas fa-paper-plane"></i> 显示消息
+                </button>
+                <p id="messageDisplay" style="margin-top: 15px; min-height: 30px;"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 CodeRunner示例 | 使用VS Code + Live Server运行</p>
+        <p>尝试修改代码并观察效果！</p>
+        <p style="margin-top: 10px;">
+            <i class="fas fa-code-branch"></i>
+            当前时间: <span id="currentTime"></span>
+        </p>
+    </footer>
+
+    <script>
+        // 计数器功能
+        let count = 0;
+        const counterElement = document.getElementById('counter');
+
+        function increaseCounter() {
+            count++;
+            counterElement.textContent = count;
+            counterElement.style.color = getRandomColor();
+        }
+
+        function resetCounter() {
+            count = 0;
+            counterElement.textContent = count;
+            counterElement.style.color = '#4cc9f0';
+            showNotification('计数器已重置！');
+        }
+
+        // 随机颜色功能
+        function getRandomColor() {
+            const colors = ['#ff595e', '#ffca3a', '#8ac926', '#1982c4', '#6a4c93'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function changeColor() {
+            const box = document.getElementById('colorBox');
+            const color1 = getRandomColor();
+            const color2 = getRandomColor();
+            box.style.background = `linear-gradient(45deg, ${color1}, ${color2})`;
+        }
+
+        // 消息功能
+        function showMessage() {
+            const input = document.getElementById('messageInput');
+            const display = document.getElementById('messageDisplay');
+
+            if (input.value.trim() === '') {
+                display.innerHTML = '<span style="color:#ff595e">请输入一些内容！</span>';
+                return;
+            }
+
+            display.innerHTML = `
+                <div style="background:rgba(67,97,238,0.2); padding:10px; border-radius:10px; display:inline-block;">
+                    <i class="fas fa-comment-dots"></i>
+                    <strong>你的消息:</strong> ${input.value}
+                </div>
+            `;
+            input.value = '';
+        }
+
+        // 显示功能提示
+        function showFeature(feature) {
+            const messages = {
+                html: 'HTML5提供了语义化标签和多媒体支持！',
+                css: 'CSS3实现了渐变、动画和响应式设计！',
+                js: 'JavaScript让网页变得动态和交互！'
+            };
+            showNotification(messages[feature]);
+        }
+
+        // 复制代码功能
+        function copyCode() {
+            const code = document.getElementById('code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                showNotification('代码已复制到剪贴板！');
+            });
+        }
+
+        // 显示通知
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // 实时更新时间
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('zh-CN');
+            document.getElementById('currentTime').textContent = timeString;
+        }
+
+        // 页面加载完成后的初始化
+        window.onload = function () {
+            updateTime();
+            setInterval(updateTime, 1000);
+
+            // 添加键盘快捷键
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    resetCounter();
+                }
+                if (e.key === ' ') {
+                    increaseCounter();
+                }
+                if (e.ctrlKey && e.key === 'c') {
+                    copyCode();
+                }
+            });
+
+            // 添加鼠标跟随效果（可选）
+            document.addEventListener('mousemove', (e) => {
+                const cards = document.querySelectorAll('.card');
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
+                        card.style.transform = `perspective(1000px) rotateY(${(x - rect.width / 2) / 20}deg) rotateX(${-(y - rect.height / 2) / 20}deg)`;
+                    } else {
+                        card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+                    }
+                });
+            });
+        };
+
+        // 添加一个简单的打字机效果
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.textContent = '';
+
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // 页面加载时的欢迎消息
+        setTimeout(() => {
+            const welcome = document.createElement('div');
+            welcome.className = 'notification';
+            welcome.style.background = '#4361ee';
+            welcome.innerHTML = '<i class="fas fa-rocket"></i> 欢迎使用CodeRunner示例页面！';
+            document.body.appendChild(welcome);
+            welcome.style.display = 'block';
+
+            setTimeout(() => {
+                welcome.style.display = 'none';
+            }, 2000);
+        }, 1000);
+    </script>
+</body>
+
+</html>
