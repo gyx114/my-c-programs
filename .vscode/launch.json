@@ -1,26 +1,26 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Debug with GDB (MSYS2)",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [],
-      "externalConsole": false, // 使用VSCode内置终端
-      "MIMode": "gdb",
-      "miDebuggerPath": "D:\\msys2\\mingw64\\bin\\gdb.exe", // 关键：指向你的gdb
-      "setupCommands": [
+    "version": "0.2.0",
+    "configurations": [
         {
-          "description": "为 gdb 启用整齐打印",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
+            "name": "Debug with GDB (MSYS2)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false, // 使用VSCode内置终端
+            "MIMode": "gdb",
+            "miDebuggerPath": "D:\\msys2\\mingw64\\bin\\gdb.exe", // 关键：指向你的gdb
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Build with GCC (MSYS2)" // 必须与tasks.json中的"label"名字完全一致！
         }
-      ],
-      "preLaunchTask": "Build with GCC (MSYS2)" // 必须与tasks.json中的"label"名字完全一致！
-    }
-  ]
+    ]
 }
